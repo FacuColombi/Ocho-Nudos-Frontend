@@ -5,7 +5,7 @@
 </script>
 
 <button
-  class="btn rounded-none bg-transparent border-white text-white {style}"
+  class="border-[1px] py-3 px-5 rounded-none bg-transparent border-white text-white normal-case {style}"
   {type}>{text}</button
 >
 

@@ -13,7 +13,7 @@
   <input
     {type}
     {placeholder}
-    class="input w-full border-l-0 border-r-0 border-t-0 rounded-none border-b-2 border-b-custom-primary mb-5 {style}"
+    class="input w-full bg-transparent border-l-0 border-r-0 border-t-0 rounded-none border-b-2 border-b-custom-primary mb-5 {style}"
   />
 </div>
 
