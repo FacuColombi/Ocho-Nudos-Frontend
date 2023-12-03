@@ -1,12 +1,14 @@
 <script>
   export let navType = "";
   export let isLogged = "";
+  import heroImg from "../../../img/logo.png"
+  import hamburgImg from "../../../img/icons/burger-menu-svgrepo-com.svg"
 </script>
 
 {#if navType == "home"}
-  <div class="flex justify-between w-full max-w-[1100px] py-6 bg-nav">
+  <div class="flex justify-between items-center w-full max-w-[1100px] py-6 bg-nav">
     <figure>
-      <img src="" alt="Logo de la marca" />
+      <img class="w-full h-auto max-w-[100px]" src={heroImg} alt="Logo de la marca" />
     </figure>
 
     <ul class="hidden sm:flex gap-0 text-white font-light md:gap-3">
@@ -18,12 +20,12 @@
     </ul>
   </div>
   {#if isLogged}
-    <span class="hidden sm:block pr-8 py-6 text-custom-primary pl-4 font-light">
+    <span class="hidden sm:block pr-8 text-custom-primary pl-4 font-light">
       {isLogged}
     </span>
   {/if}
   <div class=" black sm:hidden py-6 pr-8">
-    HambMenu
+    <img class="max-h-[60px]" src={hamburgImg} alt="">
   </div>
 {:else if navType === "cart"}
   <div class="flex justify-between w-full max-w-[1100px] py-6">

@@ -1,9 +1,10 @@
 import adapter from '@sveltejs/adapter-auto';
+import adapternetlify from '@sveltejs/adapter-netlify';
 import { vitePreprocess } from '@sveltejs/kit/vite';
-/** @type {import('@sveltejs/kit').Config} */
+/** @type {import('@sveltejs/kit').Config} */  
 const config = {
   kit: {
-    adapter: adapter()
+    adapter: adapternetlify()
   },
   preprocess: vitePreprocess()
 };
