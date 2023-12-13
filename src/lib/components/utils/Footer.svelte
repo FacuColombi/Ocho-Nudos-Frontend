@@ -9,7 +9,7 @@
     <div class="mb-4">
       <h3 class="text-lg text-white font-light">Contactanos</h3>
       <div class="mt-1 flex gap-2">
-        <img src={srcInstaIcon} alt="Instagram Icon" />
+        <img class="text-white" src={srcInstaIcon} alt="Instagram Icon" />
         <img src={srcFacebookIcon} alt="Facebook Icon" />
       </div>
       <p class="text-white text-base">097 444 070</p>

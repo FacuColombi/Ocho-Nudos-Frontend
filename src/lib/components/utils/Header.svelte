@@ -1,128 +1,40 @@
 <script>
-  export let navType = "";
-  export let isLogged = "";
-  import heroImg from "../../../img/logo.png"
-  import hamburgImg from "../../../img/icons/burger-menu-svgrepo-com.svg"
+  import heroImg from "../../../img/logo.png";
+  import hamburgImg from "../../../img/icons/burger-menu-svgrepo-com.svg";
+  import SideBar from "./SideBar.svelte";
+  import adminController from "../../../logic/adminController";
+  import { onMount } from "svelte";
+
+  let isLogged = false;
+
+  onMount(async () => {
+    const response = await adminController.checkLogin();
+    if(response?.status == "OK") isLogged = true;
+  });
 </script>
 
-{#if navType == "home"}
   <div class="flex justify-between items-center w-full max-w-[1100px] py-6 bg-nav">
     <figure>
       <img class="w-full h-auto max-w-[100px]" src={heroImg} alt="Logo de la marca" />
     </figure>
 
     <ul class="hidden sm:flex gap-0 text-white font-light md:gap-3">
-      <li><a class="active" href=" ">Home</a></li>
-      <li><a href=" ">Menú</a></li>
+      <li><a class="active" href="../">Home</a></li>
+      <li><a href="/menu">Menú</a></li>
       <li><a href=" ">Vinos</a></li>
       <li><a href=" ">Eventos</a></li>
       <li><a href=" ">Contacto</a></li>
     </ul>
   </div>
   {#if isLogged}
-    <span class="hidden sm:block pr-8 text-custom-primary pl-4 font-light">
-      {isLogged}
+    <span  class="hidden cursor-pointer sm:block pr-8 text-custom-primary pl-4 font-light">
+      <SideBar user="Administrador" />
     </span>
   {/if}
   <div class=" black sm:hidden py-6 pr-8">
     <img class="max-h-[60px]" src={hamburgImg} alt="">
   </div>
-{:else if navType === "cart"}
-  <div class="flex justify-between w-full max-w-[1100px] py-6">
-    <figure>
-      <img src="" alt="Logo de la marca" />
-    </figure>
 
-    <ul class="flex gap-2 text-white font-light ">
-      <li><a href=" ">Home</a></li>
-      <li><a class="active" href=" ">Menú</a></li>
-      <li><a href=" ">Vinos</a></li>
-      <li><a href=" ">Eventos</a></li>
-      <li><a href=" ">Contacto</a></li>
-    </ul>
-  </div>
-  {#if isLogged}
-    <span class="py-6 text-custom-primary pl-4 font-light">
-      {isLogged}
-    </span>
-  {/if}
-{:else if navType === "wines"}
-  <div class="flex justify-between w-full max-w-[1100px] py-6">
-    <figure>
-      <img src="" alt="Logo de la marca" />
-    </figure>
-
-    <ul class="flex gap-2 text-white font-light ">
-      <li><a href=" ">Home</a></li>
-      <li><a href=" ">Menú</a></li>
-      <li><a class="active" href=" ">Vinos</a></li>
-      <li><a href=" ">Eventos</a></li>
-      <li><a href=" ">Contacto</a></li>
-    </ul>
-  </div>
-  {#if isLogged}
-    <span class="py-6  text-custom-primary pl-4 font-light">
-      {isLogged}
-    </span>
-  {/if}
-{:else if navType == "events"}
-  <div class="flex justify-between w-full max-w-[1100px] py-6">
-    <figure>
-      <img src="" alt="Logo de la marca" />
-    </figure>
-
-    <ul class="flex gap-2 text-white font-light ">
-      <li><a href=" ">Home</a></li>
-      <li><a href=" ">Menú</a></li>
-      <li><a href=" ">Vinos</a></li>
-      <li><a class="active" href=" ">Eventos</a></li>
-      <li><a href=" ">Contacto</a></li>
-    </ul>
-  </div>
-  {#if isLogged}
-    <span class="py-6  text-custom-primary pl-4 font-light">
-      {isLogged}
-    </span>
-  {/if}
-{:else if navType == "contact"}
-  <div class="flex justify-between w-full max-w-[1100px] py-6">
-    <figure>
-      <img src="" alt="Logo de la marca" />
-    </figure>
-
-    <ul class="flex gap-2 text-white font-light ">
-      <li><a href=" ">Home</a></li>
-      <li><a href=" ">Menú</a></li>
-      <li><a href=" ">Vinos</a></li>
-      <li><a href=" ">Eventos</a></li>
-      <li><a class="active" href=" ">Contacto</a></li>
-    </ul>
-  </div>
-  {#if isLogged}
-    <span class="py-6  text-custom-primary pl-4 font-light">
-      {isLogged}
-    </span>
-  {/if}
-{:else}
-  <div class="flex justify-between w-full max-w-[1100px] py-6">
-    <figure>
-      <img src="" alt="Logo de la marca" />
-    </figure>
-
-    <ul class="flex gap-2 text-white font-light ">
-      <li><a href=" ">Home</a></li>
-      <li><a href=" ">Menú</a></li>
-      <li><a href=" ">Vinos</a></li>
-      <li><a href=" ">Eventos</a></li>
-      <li><a href=" ">Contacto</a></li>
-    </ul>
-  </div>
-  {#if isLogged}
-    <span class="py-6  text-custom-primary pl-4 font-light">
-      {isLogged}
-    </span>
-  {/if}
-{/if}
 
 <style>
 
