@@ -4,7 +4,7 @@ import fetchController from './fetchController.js';
 
 const bookingController = (() => {
     
-    const BASE_URL = 'http://localhost:3000/bookings';
+    const BASE_URL = 'https://ocho-nudos-backend.onrender.com/bookings';
 
     async function getBookings() {
         try {
