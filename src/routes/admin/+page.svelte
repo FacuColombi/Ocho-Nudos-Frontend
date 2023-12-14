@@ -11,8 +11,8 @@
 
   onMount(async () => {
     //Check if user is logged in
-    let user = await adminController.checkLogin();
-    if(user && user.status == "OK") window.location.href = "/";
+    let isLoggedIn = await adminController.checkLogin();
+    if(isLoggedIn) window.location.href = "/";
   });
 
   async function login(){

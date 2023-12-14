@@ -8,8 +8,8 @@
   let isLogged = false;
 
   onMount(async () => {
-    const response = await adminController.checkLogin();
-    if(response?.status == "OK") isLogged = true;
+    const isLoggedIn = await adminController.checkLogin();
+    if(isLoggedIn) isLogged = true;
   });
 </script>
 
@@ -31,9 +31,7 @@
       <SideBar user="Administrador" />
     </span>
   {/if}
-  <div class=" black sm:hidden py-6 pr-8">
-    <img class="max-h-[60px]" src={hamburgImg} alt="">
-  </div>
+  
 
 
 <style>
