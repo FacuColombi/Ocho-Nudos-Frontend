@@ -4,7 +4,7 @@
     import MenuYVinos from "../../lib/components/sections/MenuYVinos.svelte";
     import SideBar from "../../lib/components/utils/SideBar.svelte";
 
-    const base_url = "http://localhost:3000";
+    const base_url = "https://ocho-nudos-backend.onrender.com";
 
   </script>
   

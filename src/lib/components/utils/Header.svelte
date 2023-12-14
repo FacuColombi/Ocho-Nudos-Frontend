@@ -21,9 +21,9 @@
     <ul class="hidden sm:flex gap-0 text-white font-light md:gap-3">
       <li><a class="active" href="../">Home</a></li>
       <li><a href="/menu">Menú</a></li>
-      <li><a href=" ">Vinos</a></li>
-      <li><a href=" ">Eventos</a></li>
-      <li><a href=" ">Contacto</a></li>
+      <li><a href="/vinos">Vinos</a></li>
+      <li><a href="/eventos">Eventos</a></li>
+      <li><a href="#footerSection">Contacto</a></li>
     </ul>
   </div>
   {#if isLogged}
