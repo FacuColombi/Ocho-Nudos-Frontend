@@ -6,21 +6,21 @@ const adminController = (() => {
     
     async function login(userDetails) {
         try{
+            debugger;
             if(!userDetails.email || !userDetails.password);
 
             const res = await fetchController.execute("http://localhost:3000/users/login", "POST", userDetails);
             if(!res) throw new Error("Error in login");
 
-            const response = JSON.parse(res);
-            if(!response?.data?.email) throw new Error("Error in data login");
+            if(!res?.data?.email) throw new Error("Error in data login");
 
             //Save user logged in to local storage
-            localStorage.setItem("userLogged", JSON.stringify(response?.data));
+            localStorage.setItem("userLogged", JSON.stringify(res?.data));
 
             //Redirect to home
             window.location.href = "/";
 
-            return {status: "OK", data: response?.data};
+            return {status: "OK", data: res?.data};
 
         }catch(error){
             return error;
@@ -41,9 +41,10 @@ const adminController = (() => {
             const userLogged = localStorage.getItem("userLogged");
             if(!userLogged) throw new Error("User not logged in");
 
-            return {status: "OK", data: userLogged};
+            return true;
         }catch(error){
-            return error;
+            console.log(error);
+            return false;
         }
     }
 

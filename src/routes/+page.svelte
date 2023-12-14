@@ -9,7 +9,19 @@
   import Reserva from "../lib/components/popups/Reserva.svelte";
   import Form from "../lib/components/utils/Form.svelte";
   import popupController from "../logic/popupsController.js";
+  import EventosCreate from "./../lib/components/adminSidebars/EventosCreate.svelte";
+  import EventosList from "./../lib/components/adminSidebars/EventosList.svelte";
+  import reviewsController from "../logic/reviewsController.js";
+  import { onMount } from "svelte";
 
+  let reviews = [];
+
+  onMount(async () => {
+    const responseReviews = await reviewsController.getReviews();
+    if(responseReviews && !responseReviews.error){
+      reviews = responseReviews?.data;
+    }
+  });
 
 </script>
 
@@ -21,7 +33,6 @@
 
   <Reserva/>
   <!-- HERO SECTION -->
-
   <section
     class="h-[100vh] top-0 bottom-0 left-0 right-0 relative bg-gray-600 flex justify-center items-center"
   >
@@ -42,7 +53,8 @@
       </h1>
     </article>
   </section>
-
+<EventosCreate />
+<EventosList />
   <!-- QUIK ACCESS -->
 
   <section
@@ -119,7 +131,7 @@
   </section>
 
   <section class="h-[100vh] bg-gray-800">
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 w-full h-full">
+    <div class="gallery-custom-grid w-full h-full">
       <figure class="bg-cover bg-center" style="background-image: url(src/img/gallery/gallery1.jpg);"></figure>
       <figure class="bg-cover bg-center" style="background-image: url(src/img/gallery/gallery2.jpg);"></figure>
       <figure class="bg-cover bg-center" style="background-image: url(src/img/gallery/gallery3.jpg);"></figure>
@@ -152,43 +164,39 @@
   <!-- GOOGLE REVIEWS -->
 
   <section
-    class="section-bg bg-center bg-cover h-[100vh] flex justify-center"
-    style="background-image: url(src/img/reviews-image.jpg); background-attachment:fixed"
+  class="section-bg bg-center bg-cover h-[100vh] flex justify-center"
+  style="background-image: url(src/img/reviews-image.jpg); background-attachment:fixed"
   >
-    <div class="bg-black w-full bg-opacity-[0.5]">
-      <h2
-        class="text-center text-5xl text-custom-primary font-extralight mt-20"
-      >
-        Reseñas
-      </h2>
-      <div class="w-full h-[80vh] flex justify-center items-center">
-        <article
-          class="h-[450px] text-sm sm:text-base sm:h-[400px] mx-10 max-w-[900px] w-full bg-black border border-custom-primary flex justify-center item text-white"
-        >
-          <div
-            class="flex flex-col justify-center items-start gap-3 mt-5 w-[80%] h-[80%]"
+  <div class="bg-black w-full bg-opacity-[0.5]">
+    <h2
+    class="text-center text-5xl text-custom-primary font-extralight mt-20"
+    >
+    Reseñas
+  </h2>
+  <div class="w-full h-[80vh] flex justify-center items-center">
+        {#each reviews as review}
+          <article
+            class="h-[450px] text-sm sm:text-base sm:h-[400px] mx-10 max-w-[900px] w-full bg-black border border-custom-primary flex justify-center item text-white"
           >
-            <div class="flex justify-start items-center gap-4">
-              <figure
-                class="w-[50px] h-[50px] sm:w-[70px] sm:h-[70px] overflow-hidden rounded-full bg-cover bg-center"
-                style="background-image: url(src/img/skils-image.jpg);"
-              ></figure>
-              <h3 class="text-xl font-extralight">Juana <br /> Martinez</h3>
+            <div
+              class="flex flex-col justify-center items-start gap-3 mt-5 w-[80%] h-[80%]"
+            >
+              <div class="flex justify-start items-center gap-4">
+                <figure
+                  class="w-[50px] h-[50px] sm:w-[70px] sm:h-[70px] overflow-hidden rounded-full bg-cover bg-center"
+                  style="background-image: url(src/img/reviwes/userReview.png);"
+                ></figure>
+                <h3 class="text-xl font-extralight">{review?.userName}</h3>
+                <p>Rating: {review?.rating}</p>
+              </div>
+              <div>
+                <p>
+                  {review?.message}
+                </p>
+              </div>
             </div>
-            <div>
-              <p>
-                Ocho Nudos es simplemente sublime. La ubicación, con vistas al
-                mar y a solo unas cuadras del puerto, crea un ambiente mágico
-                para disfrutar de una comida excepcional. Cada plato es una obra
-                maestra de sabores y presentación, reflejando una dedicación a
-                la calidad y la frescura. El personal es amable y atento,
-                haciendo que te sientas como en casa desde el primer momento.
-                Este lugar sin duda se ha convertido en un destino obligado cada
-                vez que visitamos Piriápolis.
-              </p>
-            </div>
-          </div>
-        </article>
+          </article>
+        {/each}
       </div>
     </div>
   </section>
@@ -215,7 +223,7 @@
             en el tiempo.
           </p>
         </div>
-        <form action="">
+        <form  action="">
           <Form />
         </form>
       </div>
@@ -244,7 +252,25 @@
     background-image: url(../img/02-10\ imagen\ 2.jpg);
   }
 
+
+
   .gallery-custom-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  @media screen and (max-width: 768px){
+  .gallery-custom-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  }
+
+  @media screen and (max-width: 619px){
+
+    .gallery-custom-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     grid-template-areas:
       "a a a b"
       "a a a c"
@@ -293,4 +319,6 @@
   .gallery-custom-grid figure:nth-of-type(12) {
     grid-area: l;
   }
+  }
+  
 </style>

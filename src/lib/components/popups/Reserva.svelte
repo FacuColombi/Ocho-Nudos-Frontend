@@ -110,11 +110,11 @@
     />
     <div class="col-span-full">
         <label class="label-text text-base md:text-xl font-light text-white" for="">Comentarios</label>
-        <textarea bind:value={bookingDetails.comments} placeholder="Deja tu compentario aqui" class="w-full px-4 bg-transparent text-xs md:text-base  text-white border-l-0 border-r-0 border-t-0 rounded-none border-b-2 border-b-custom-primary  sm:mb-5 resize-y max-h-[100px] mt-3"></textarea>
+        <textarea bind:value={bookingDetails.comments} placeholder="Deja tu compentario aqui" class="w-full px-4 bg-transparent text-xs md:text-base  text-white border-l-0 border-r-0 border-t-0 rounded-none border-b-[1px] border-b-custom-primary  sm:mb-5 resize-y max-h-[100px] mt-3"></textarea>
     </div>
   </div>
   {#if showError}
-    <Message message={message}/>
+    <Message className={"text-red-400"} message={message}/>
   {/if}
   {#if bookingCreated}
     <Message className={"text-green-200"} message={message}/>
