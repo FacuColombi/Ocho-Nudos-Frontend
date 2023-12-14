@@ -4,7 +4,7 @@
   import Button from "../utils/Button.svelte";
   import popupController from "../../../logic/popupsController";
 
-  const base_url = "http://localhost:3000/";
+  const base_url = "https://ocho-nudos-backend.onrender.com/";
 </script>
 
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->

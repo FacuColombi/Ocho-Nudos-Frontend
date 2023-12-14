@@ -6,7 +6,7 @@ import { get } from 'svelte/store';
 const eventController = (() => {
 
     async function getEvents() {
-        const response = await fetchController.execute('http://localhost:3000/events');
+        const response = await fetchController.execute('https://ocho-nudos-backend.onrender.com/events');
         return response;
     }
 
@@ -18,7 +18,7 @@ const eventController = (() => {
         formdata.append("hour", eventDetails?.hour);
         formdata.append("name", eventDetails?.name);
 
-        const response = await fetchController.execute('http://localhost:3000/events', "POST", formdata, true);
+        const response = await fetchController.execute('https://ocho-nudos-backend.onrender.com/events', "POST", formdata, true);
 
         if (response && !response.error) {
             // Update the store
@@ -31,13 +31,13 @@ const eventController = (() => {
 
 
     async function updateEvent(event) {
-        const response = await fetchController.execute('http://localhost:3000/events', "PUT", event);
+        const response = await fetchController.execute('https://ocho-nudos-backend.onrender.com/events', "PUT", event);
         return response;
     }
 
     async function deleteEvent(idToDelete) {
         
-        const response = await fetchController.execute('http://localhost:3000/events', "DELETE", {id:idToDelete});
+        const response = await fetchController.execute('https://ocho-nudos-backend.onrender.com/events', "DELETE", {id:idToDelete});
         if (response && !response.error) {
             debugger;
             // Update the store

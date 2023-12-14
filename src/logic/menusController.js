@@ -10,7 +10,7 @@ const menusController = (() => {
         formData.append("menu_pdf", files[0], files[0].name);
         formData.append("type_pdf", type);
 
-        const response = await fetchController.execute("http://localhost:3000/upload/pdf", "POST", formData, true);
+        const response = await fetchController.execute("https://ocho-nudos-backend.onrender.com/upload/pdf", "POST", formData, true);
         return response;
     }
 
