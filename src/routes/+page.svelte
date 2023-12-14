@@ -13,6 +13,7 @@
   import EventosList from "./../lib/components/adminSidebars/EventosList.svelte";
   import reviewsController from "../logic/reviewsController.js";
   import { onMount } from "svelte";
+  
 
   let reviews = [];
 
@@ -22,6 +23,7 @@
       reviews = responseReviews?.data;
     }
   });
+  
 
 </script>
 
@@ -31,6 +33,8 @@
 
 <main class="bg-custom-scondary">
 
+
+  
   <Reserva/>
   <!-- HERO SECTION -->
   <section

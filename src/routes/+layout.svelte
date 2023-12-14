@@ -14,3 +14,8 @@
   <div class="backgroundPopup w-full h-[1000vh] absolute z-[100] bg-gray-300 opacity-[.5] hidden">
   </div>
   <slot />
+
+
+  <style>
+
+  </style>

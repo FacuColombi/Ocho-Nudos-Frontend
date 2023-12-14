@@ -4,7 +4,7 @@
   export let srcFacebookIcon = "";
 </script>
 
-<div class="max-w-[1100px] w-full text-white pb-10 flex flex-col sm:flex-row mx-[5%] xl:mx-0 justify-between">
+<div id="footerSection" class="max-w-[1100px] w-full text-white pb-10 flex flex-col sm:flex-row mx-[5%] xl:mx-0 justify-between">
   <article class="my-8">
     <div class="mb-4">
       <h3 class="text-lg text-white font-light">Contactanos</h3>
